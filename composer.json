@@ -1,0 +1,25 @@
+{
+    "name": "emma/security",
+    "description": "A PHP 8.0+ security services for Emma Framework.",
+    "authors": [
+        {
+            "name": "Ademola Aina",
+            "email" : "debascoguy@gmail.com",
+            "homepage": "https://github.com/debascoguy/Security",
+            "role": "Founder/Lead Software Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "emma/common": "^1.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Emma\\Security\\": "Src/"
+        }
+    },
+    "require-dev": {
+		"emma/common": "^1.0.2"
+	},
+    "license": "GPL-2.0-only"
+}
