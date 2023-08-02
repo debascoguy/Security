@@ -7,7 +7,7 @@
 namespace Emma\Security\Access;
 
 use Emma\App\Constants;
-use Emma\App\Controller\Service\BaseController;
+use Emma\App\Controller\BaseController;
 use Emma\Di\Attribute\Inject;
 use Emma\Di\Container\ContainerManager;
 use Emma\Http\HttpStatus;
