@@ -25,12 +25,12 @@ class LoginStatus
     /**
      * @var string
      */
-    protected string $message = "";
+    protected ?string $message = "";
 
     /**
      * @var string
      */
-    protected string $gotoPage = "";
+    protected ?string $gotoPage = "";
 
     /**
      * @var null | UserInterface
@@ -109,7 +109,7 @@ class LoginStatus
      * @param string $message
      * @return $this
      */
-    public function setMessage(string $message): static
+    public function setMessage(?string $message): static
     {
         $this->message = $message;
         return $this;
@@ -127,7 +127,7 @@ class LoginStatus
      * @param string $gotoPage
      * @return $this
      */
-    public function setGotoPage(string $gotoPage): static
+    public function setGotoPage(?string $gotoPage): static
     {
         $this->gotoPage = $gotoPage;
         return $this;

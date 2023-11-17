@@ -1,7 +1,7 @@
 <?php
 namespace Emma\Security\Access;
 
-use Emma\Modules\Api\Model\Entity\AppPrivilege;
+use Moneypally\Modules\Api\Model\Entity\AppPrivilege;
 use Emma\Security\Access\Interfaces\AuthorityInterface;
 use Emma\Security\Access\Interfaces\PrivilegeInterface;
 use Emma\Security\Access\Interfaces\RoleInterface;
