@@ -7,7 +7,7 @@ namespace Emma\Security\Access\Interfaces;
  */
 interface UserInterface
 {
-    public function getId(): int;
+    public function getId(): ?int;
 
     /**
      * @return string
