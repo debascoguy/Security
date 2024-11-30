@@ -9,56 +9,26 @@ use Emma\Common\Utils\StringManagement;
  */
 class PasswordEncoder
 {
-    public const SIGNATURE = "$1E_";
-
-    /**
-     * @param $value
-     * @return string
-     */
-    public static function signEncryption($value): string
-    {
-        return self::SIGNATURE . $value . self::SIGNATURE;
-    }
-
-    /**
-     * @param $value
-     * @return string
-     */
-    public static function unSignEncryption($value): string
-    {
-        return trim($value, self::SIGNATURE);
-    }
-
-    /**
-     * @param $value
-     * @return bool
-     *
-     * If a value is not signed, Then it is not encrypted using our system.
-     */
-    public static function isSigned($value): bool
-    {
-        return (StringManagement::startsWith($value, self::SIGNATURE) || StringManagement::endsWith($value, self::SIGNATURE));
-    }
+    public const PASSWORD_ALGORITHM = [
+        PASSWORD_DEFAULT => PASSWORD_DEFAULT,
+        PASSWORD_BCRYPT => PASSWORD_BCRYPT,
+        PASSWORD_ARGON2I => PASSWORD_ARGON2I,
+        PASSWORD_ARGON2ID => PASSWORD_ARGON2ID
+    ];
 
     /**
      * @param string $passwordText
      * @return string
      */
-    public static function encodePassword(string $passwordText): string
+    public static function encodePassword(string $passwordText, string $algo = PASSWORD_BCRYPT, array $options = []): string
     {
-        return self::signEncryption(
-                substr(
-                        sha1(
-                                md5($passwordText)
-                                ), 0, 28
-                        )
-                );
+        return password_hash($passwordText, $algo, $options);
     }
     
     /**
      * 
      */
-    public static function validatePassword($encodedPassword, $passwordText): bool
+    public static function validatePassword(string $encodedPassword, string $passwordText): bool
     {
         return (self::encodePassword($passwordText) == $encodedPassword);
     }
@@ -71,7 +41,6 @@ class PasswordEncoder
     {
         return self::encodePassword($passwordText);
     }
-    
     
     /**
      * @param string $encodedPassword
